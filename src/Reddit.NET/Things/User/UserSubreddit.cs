@@ -8,28 +8,28 @@ namespace Reddit.Things
     public class UserSubreddit
     {
         [JsonProperty("default_set")]
-        public bool DefaultSet { get; set; }
+        public bool? DefaultSet { get; set; }
 
         [JsonProperty("banner_img")]
         public string BannerImg { get; set; }
 
         [JsonProperty("user_is_banned")]
-        public bool UserIsBanned { get; set; }
+        public bool? UserIsBanned { get; set; }
 
         [JsonProperty("free_form_reports")]
-        public bool FreeFormReports { get; set; }
+        public bool? FreeFormReports { get; set; }
 
         [JsonProperty("community_icon")]
         public string CommunityIcon { get; set; }
 
         [JsonProperty("show_media")]
-        public bool ShowMedia { get; set; }
+        public bool? ShowMedia { get; set; }
 
         [JsonProperty("icon_color")]
         public string IconColor { get; set; }
 
         [JsonProperty("user_is_muted")]
-        public bool UserIsMuted { get; set; }
+        public bool? UserIsMuted { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
@@ -41,10 +41,10 @@ namespace Reddit.Things
         public string Title { get; set; }
 
         [JsonProperty("user_is_moderator")]
-        public bool UserIsModerator { get; set; }
+        public bool? UserIsModerator { get; set; }
 
         [JsonProperty("over_18")]
-        public bool Over18 { get; set; }
+        public bool? Over18 { get; set; }
 
         [JsonProperty("icon_size")]
         public List<int> IconSize { get; set; }
@@ -98,12 +98,12 @@ namespace Reddit.Things
         public string PublicDescription { get; set; }
 
         [JsonProperty("link_flair_enabled")]
-        public bool LinkFlairEnabled { get; set; }
+        public bool? LinkFlairEnabled { get; set; }
 
         [JsonProperty("subreddit_type")]
         public string SubredditType { get; set; }
 
         [JsonProperty("user_is_subscriber")]
-        public bool UserIsSubscriber { get; set; }
+        public bool? UserIsSubscriber { get; set; }
     }
 }
