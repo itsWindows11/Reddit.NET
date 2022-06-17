@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Reddit.Exceptions
 {
+    /// <summary>
+    /// An <see cref="Exception"/> which gets triggered when the request is sent in a bad format.
+    /// </summary>
     [Serializable]
     public class RedditBadRequestException : Exception
     {

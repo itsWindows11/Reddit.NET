@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Reddit.Exceptions
 {
+    /// <summary>
+    /// An <see cref="Exception"/> which gets triggered when reddit responds back with 502.
+    /// </summary>
     [Serializable]
     public class RedditBadGatewayException : Exception
     {

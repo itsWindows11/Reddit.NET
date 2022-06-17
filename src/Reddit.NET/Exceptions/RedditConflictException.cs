@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Reddit.Exceptions
 {
+    /// <summary>
+    /// An <see cref="Exception"/> which gets triggered when there's a conflict.
+    /// </summary>
     [Serializable]
     public class RedditConflictException : Exception
     {

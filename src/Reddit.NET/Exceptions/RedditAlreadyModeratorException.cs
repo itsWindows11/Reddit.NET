@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Reddit.Exceptions
 {
+    /// <summary>
+    /// An <see cref="Exception"/> which gets triggered when the user is already a moderator of the subreddit.
+    /// </summary>
     [Serializable]
     public class RedditAlreadyModeratorException : Exception
     {
