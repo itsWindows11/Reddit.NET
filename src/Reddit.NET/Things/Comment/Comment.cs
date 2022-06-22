@@ -64,8 +64,7 @@ namespace Reddit.Things
         public bool IgnoreReports { get; set; }
 
         [JsonProperty("edited")]
-        [JsonConverter(typeof(UtcTimestampConverter))]
-        public DateTime Edited { get; set; }
+        public bool Edited { get; set; }
 
         [JsonProperty("author_flair_css_class")]
         public string AuthorFlairCSSClass { get; set; }
