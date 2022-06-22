@@ -557,7 +557,7 @@ namespace Reddit.Controllers
         public Comment Comment(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return new Comment(Dispatch, Subreddit, author, body, Fullname, bodyHtml, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,
@@ -600,7 +600,7 @@ namespace Reddit.Controllers
         public Comment Reply(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return Comment(body, bodyHtml, author, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,
@@ -633,7 +633,7 @@ namespace Reddit.Controllers
         public async Task<Comment> ReplyAsync(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return await Comment(body, bodyHtml, author, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,

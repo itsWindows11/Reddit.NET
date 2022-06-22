@@ -120,13 +120,13 @@ namespace Reddit.Controllers
         }
 
         /// <summary>
-        /// When the comment was last edited.
+        /// Whether the comment was edited or not.
         /// </summary>
-        public DateTime Edited
+        public bool Edited
         {
             get
             {
-                return (Listing != null ? Listing.Edited : default(DateTime));
+                return Listing != null ? Listing.Edited : false;
             }
             set
             {
@@ -515,7 +515,7 @@ namespace Reddit.Controllers
         public Comment(Dispatch dispatch, string subreddit, string author, string body, string parentFullname, string bodyHtml = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<Things.More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null, 
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime), 
+            string permalink = null, DateTime created = default(DateTime), bool edited = false, 
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             Dispatch = dispatch;
@@ -562,7 +562,7 @@ namespace Reddit.Controllers
         private void Import(string subreddit, string author, string body, string bodyHtml,
             string parentFullname = null, string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<Things.More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             Listing = new Things.Comment
@@ -596,7 +596,7 @@ namespace Reddit.Controllers
         private void ImportToExisting(string subreddit = null, string author = null, string body = null, string bodyHtml = null,
             string parentFullname = null, string collapsedReason = null, bool? collapsed = null, bool? isSubmitter = null,
             List<Comment> replies = null, List<Things.More> more = null, bool? scoreHidden = null, int? depth = null, string id = null, string fullname = null,
-            string permalink = null, DateTime? created = null, DateTime? edited = null,
+            string permalink = null, DateTime? created = null, bool? edited = null,
             int? score = null, int? upVotes = null, int? downVotes = null, bool? removed = null, bool? spam = null)
         {
             if (Listing == null)
@@ -618,7 +618,7 @@ namespace Reddit.Controllers
                     fullname,
                     permalink,
                     created ?? default(DateTime),
-                    edited ?? default(DateTime),
+                    edited ?? false,
                     score ?? 0,
                     upVotes ?? 0,
                     downVotes ?? 0,
@@ -755,7 +755,7 @@ namespace Reddit.Controllers
         public Comment Reply(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<Things.More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return BuildReply(body, bodyHtml, author, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,
@@ -788,7 +788,7 @@ namespace Reddit.Controllers
         public async Task<Comment> ReplyAsync(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<Things.More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return await BuildReply(body, bodyHtml, author, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,
@@ -822,7 +822,7 @@ namespace Reddit.Controllers
         public Comment BuildReply(string body, string bodyHtml = null, string author = null,
             string collapsedReason = null, bool collapsed = false, bool isSubmitter = false,
             List<Comment> replies = null, List<Things.More> more = null, bool scoreHidden = false, int depth = 0, string id = null, string fullname = null,
-            string permalink = null, DateTime created = default(DateTime), DateTime edited = default(DateTime),
+            string permalink = null, DateTime created = default(DateTime), bool edited = false,
             int score = 0, int upVotes = 0, int downVotes = 0, bool removed = false, bool spam = false)
         {
             return new Comment(Dispatch, Subreddit, author, body, Fullname, bodyHtml, collapsedReason, collapsed, isSubmitter, replies, more, scoreHidden,
