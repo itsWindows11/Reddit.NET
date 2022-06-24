@@ -206,6 +206,9 @@ namespace Reddit.Things
         [JsonProperty("link_id")]
         public string LinkId { get; set; }
 
+        [JsonProperty("locked")]
+        public bool Locked { get; set; }
+
         public Comment() { }
 
         private void ImportFromComment(Controllers.Comment comment)
