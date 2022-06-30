@@ -5,6 +5,8 @@ using Reddit.Models.Converters;
 using System;
 using System.Collections.Generic;
 
+#nullable enable
+
 namespace Reddit.Things
 {
     [Serializable]
@@ -328,6 +330,12 @@ namespace Reddit.Things
 
         [JsonProperty("sr_detail")]
         public Subreddit SrDetail { get; set; }
+
+        [JsonProperty("media_metadata")]
+        public ImageGallery? MediaMetadata { get; set; }
+
+        [JsonProperty("is_gallery")]
+        public bool? IsGallery { get; set; }
 
         public Post(Controllers.Post post)
         {
