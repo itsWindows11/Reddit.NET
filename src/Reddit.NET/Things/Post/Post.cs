@@ -332,7 +332,7 @@ namespace Reddit.Things
         public Subreddit SrDetail { get; set; }
 
         [JsonProperty("media_metadata")]
-        public ImageGallery? MediaMetadata { get; set; }
+        public Dictionary<string, ImageContainer> MediaMetadata { get; set; }
 
         [JsonProperty("is_gallery")]
         public bool? IsGallery { get; set; }
