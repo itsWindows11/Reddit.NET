@@ -6,6 +6,6 @@ namespace Reddit.Things
 {
     public class ImageGallery
     {
-        public List<ImageContainer> ImageContainers { get; set; }
+        public Dictionary<string, ImageContainer> ImageContainers { get; set; }
     }
 }
