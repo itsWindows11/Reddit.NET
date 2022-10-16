@@ -16,11 +16,8 @@ namespace Reddit.Things
         [JsonProperty("visibility")]
         public string Visibility { get; set; }
 
-        [JsonProperty("icon_name")]
-        public string IconName { get; set; }
-
-        [JsonProperty("weighting_scheme")]
-        public string WeightingScheme { get; set; }
+        [JsonProperty("icon_img")]
+        public string IconImg { get; set; }
 
         [JsonProperty("key_color")]
         public string KeyColor { get; set; }
@@ -40,10 +37,9 @@ namespace Reddit.Things
         /// <param name="subreddits">List of subreddits with which to initially populate the multireddit</param>
         /// <param name="visibility">One of (public, private, hidden)</param>
         /// <param name="weightingScheme">One of (classic, fresh)</param>
-        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconName, string keyColor, List<SubredditName> subreddits,
-            string visibility, string weightingScheme)
+        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconImg, string keyColor, List<SubredditName> subreddits, string visibility)
         {
-            Import(descriptionMd, displayName, iconName, keyColor, subreddits, visibility, weightingScheme);
+            Import(descriptionMd, displayName, iconImg, keyColor, subreddits, visibility);
         }
 
         /// <summary>
@@ -58,16 +54,16 @@ namespace Reddit.Things
         /// <param name="subreddits">List of subreddits with which to initially populate the multireddit</param>
         /// <param name="visibility">One of (public, private, hidden)</param>
         /// <param name="weightingScheme">One of (classic, fresh)</param>
-        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconName, string keyColor, List<Subreddit> subreddits,
-            string visibility, string weightingScheme)
+        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconImg, string keyColor, List<Subreddit> subreddits, string visibility)
         {
             List<SubredditName> subs = new List<SubredditName>();
+
             foreach (Subreddit sub in subreddits)
             {
                 subs.Add(new SubredditName(sub.DisplayName));
             }
 
-            Import(descriptionMd, displayName, iconName, keyColor, subs, visibility, weightingScheme);
+            Import(descriptionMd, displayName, iconImg, keyColor, subs, visibility);
         }
 
         /// <summary>
@@ -82,16 +78,16 @@ namespace Reddit.Things
         /// <param name="subreddits">List of subreddits with which to initially populate the multireddit</param>
         /// <param name="visibility">One of (public, private, hidden)</param>
         /// <param name="weightingScheme">One of (classic, fresh)</param>
-        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconName, string keyColor, List<Controllers.Subreddit> subreddits,
-            string visibility, string weightingScheme)
+        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconImg, string keyColor, List<Controllers.Subreddit> subreddits, string visibility)
         {
             List<SubredditName> subs = new List<SubredditName>();
+
             foreach (Controllers.Subreddit sub in subreddits)
             {
                 subs.Add(new SubredditName(sub.Name));
             }
 
-            Import(descriptionMd, displayName, iconName, keyColor, subs, visibility, weightingScheme);
+            Import(descriptionMd, displayName, iconImg, keyColor, subs, visibility);
         }
 
         /// <summary>
@@ -106,30 +102,28 @@ namespace Reddit.Things
         /// <param name="subreddits">List of subreddits with which to initially populate the multireddit</param>
         /// <param name="visibility">One of (public, private, hidden)</param>
         /// <param name="weightingScheme">One of (classic, fresh)</param>
-        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconName, string keyColor, List<string> subreddits,
-            string visibility = "private", string weightingScheme = "classic")
+        public LabeledMultiSubmit(string descriptionMd, string displayName, string iconImg, string keyColor, List<string> subreddits, string visibility = "private")
         {
             List<SubredditName> subs = new List<SubredditName>();
+
             foreach (string sub in subreddits)
             {
                 subs.Add(new SubredditName(sub));
             }
 
-            Import(descriptionMd, displayName, iconName, keyColor, subs, visibility, weightingScheme);
+            Import(descriptionMd, displayName, iconImg, keyColor, subs, visibility);
         }
 
         public LabeledMultiSubmit() { }
 
-        private void Import(string descriptionMd, string displayName, string iconName, string keyColor, List<SubredditName> subreddits,
-            string visibility, string weightingScheme)
+        private void Import(string descriptionMd, string displayName, string iconImg, string keyColor, List<SubredditName> subreddits, string visibility)
         {
             DescriptionMd = descriptionMd;
             DisplayName = displayName;
-            IconName = iconName;
+            IconImg = iconImg;
             KeyColor = keyColor;
             Subreddits = subreddits;
             Visibility = visibility;
-            WeightingScheme = weightingScheme;
         }
     }
 }
